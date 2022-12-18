@@ -1,4 +1,4 @@
-import { Button, Htag } from "../components";
+import { Button, Ptag, Htag } from "../components";
 
 export default function Home(): JSX.Element {
   return (
@@ -11,6 +11,12 @@ export default function Home(): JSX.Element {
       <Button arrow='right' appearance='ghost'>
         ghost
       </Button>
+      <Ptag>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus
+        numquam nobis placeat recusandae praesentium cum, ex porro! Sunt
+        nesciunt molestiae, eaque consequatur quaerat quia explicabo ipsa,
+        inventore omnis reiciendis aspernatur.
+      </Ptag>
     </>
   );
 }
