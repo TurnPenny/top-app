@@ -9,7 +9,7 @@
 
   font-size: 14px;
   text-align: center;
-  transition: all 0.2 ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .primary {
@@ -32,4 +32,19 @@
 .ghost:hover {
   background-color: var(--primary);
   color: var(--white);
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.down {
+  transform: rotate(90deg);
+  transition: all 0.2s;
+}
+
+.primary svg,
+.ghost:hover svg {
+  fill: var(--white);
 }

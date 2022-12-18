@@ -4,9 +4,13 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Htag tag='h1'>TEXT</Htag>
-      <Button>Standart</Button>
-      <Button appearance='primary'>Primary</Button>
-      <Button appearance='ghost'>ghost</Button>
+      <Button arrow='right'>Standart</Button>
+      <Button arrow='down' appearance='primary'>
+        Primary
+      </Button>
+      <Button arrow='right' appearance='ghost'>
+        ghost
+      </Button>
     </>
   );
 }
