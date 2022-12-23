@@ -1,12 +1,13 @@
 import { truncate } from "fs";
 import { useState } from "react";
 import { Button, Ptag, Htag, Tag, RatingComponent } from "../components";
+import { Layout } from "../layout/Layout";
 
 export default function Home(): JSX.Element {
   const [rating, setRating] = useState<number>(4);
 
   return (
-    <>
+    <Layout>
       <Htag tag='h1'>TEXT</Htag>
       <Button arrow='right'>Standart</Button>
       <Button arrow='down' appearance='primary'>
@@ -30,6 +31,6 @@ export default function Home(): JSX.Element {
       <Tag color='ghost'>tag</Tag>
       <Tag color='red'>tag</Tag>
       <RatingComponent isEditable rating={rating} setRating={setRating} />
-    </>
+    </Layout>
   );
 }
