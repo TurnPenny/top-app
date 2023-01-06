@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
-import { FirstLevelMenuItem } from '../../interfaces/menu.interface';
+import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
 import styles from './Menu.module.css';
 import cn from 'classnames';
 import CoursesIcon from './icons/courses.svg';
@@ -54,15 +54,34 @@ export const Menu = (): JSX.Element => {
                 <span>{menu.name}</span>
               </div>
             </a>
-            {buildSecondLevel}
+            {menu.id == firstCategory && buildSecondLevel(menu)}
           </div>
         ))}
       </>
     );
   };
 
-  const buildSecondLevel = () => {
-    return <></>;
+  const buildSecondLevel = (firstLevelMenu: FirstLevelMenuItem) => {
+    return (
+      <div>
+        {menu.map((item) => (
+          <div key={item._id.secondCategory}>
+            <div className={styles.secondLevel}>{item._id.secondCategory}</div>
+            <div
+              className={cn(styles.secondLevel__block, {
+                [styles.secondLevel__blockOpen]: item.isOpened,
+              })}
+            >
+              {biuldThirdLevel(item.pages, firstLevelMenu.route)}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const biuldThirdLevel = (pages: PageItem[], route: string) => {
+    return <div></div>;
   };
 
   return <div className={styles.menu}>{buildFirstLevel()}</div>;
