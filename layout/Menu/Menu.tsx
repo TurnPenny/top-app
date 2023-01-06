@@ -42,19 +42,19 @@ export const Menu = (): JSX.Element => {
   const buildFirstLevel = () => {
     return (
       <>
-        {firstLevelMenu.map((menu) => (
-          <div key={menu.route}>
-            <a href={`/${menu.route}`}>
+        {firstLevelMenu.map((menuItem) => (
+          <div key={menuItem.route}>
+            <a href={`/${menuItem.route}`}>
               <div
                 className={cn(styles.firstLevel, {
-                  [styles.firstLevel__active]: menu.id == firstCategory,
+                  [styles.firstLevel__active]: menuItem.id == firstCategory,
                 })}
               >
-                {menu.icon}
-                <span>{menu.name}</span>
+                {menuItem.icon}
+                <span>{menuItem.name}</span>
               </div>
             </a>
-            {menu.id == firstCategory && buildSecondLevel(menu)}
+            {menuItem.id == firstCategory && buildSecondLevel(menuItem)}
           </div>
         ))}
       </>
@@ -63,7 +63,7 @@ export const Menu = (): JSX.Element => {
 
   const buildSecondLevel = (firstLevelMenu: FirstLevelMenuItem) => {
     return (
-      <div>
+      <div className={styles.secondBlock}>
         {menu.map((item) => (
           <div key={item._id.secondCategory}>
             <div className={styles.secondLevel}>{item._id.secondCategory}</div>
@@ -72,7 +72,7 @@ export const Menu = (): JSX.Element => {
                 [styles.secondLevel__blockOpen]: item.isOpened,
               })}
             >
-              {biuldThirdLevel(item.pages, firstLevelMenu.route)}
+              {buildThirdLevel(item.pages, firstLevelMenu.route)}
             </div>
           </div>
         ))}
@@ -80,8 +80,17 @@ export const Menu = (): JSX.Element => {
     );
   };
 
-  const biuldThirdLevel = (pages: PageItem[], route: string) => {
-    return <div></div>;
+  const buildThirdLevel = (pages: PageItem[], route: string) => {
+    return pages.map((page) => (
+      <a
+        href={`/${route}/${page.alias}`}
+        className={cn(styles.thirdLevel, {
+          [styles.thirdLevel__active]: true, //fix it later
+        })}
+      >
+        {page.category}
+      </a>
+    ));
   };
 
   return <div className={styles.menu}>{buildFirstLevel()}</div>;
